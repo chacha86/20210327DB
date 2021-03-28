@@ -12,7 +12,7 @@ SET title = '제목1',
 # 제목1, 내용1 데이터 또 하나 추가
 INSERT INTO article 
 SET title = '제목1',
-`body` = '내용1';
+`body` = '내용1'; 
 
 # key
 # 데이터 조회(게시물 구분 안됨)
