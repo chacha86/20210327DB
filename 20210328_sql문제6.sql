@@ -43,8 +43,9 @@ ALTER TABLE article MODIFY id INT(5) NOT NULL;
 # 기존의 NULL값이 0으로 바뀐다.
 
 # id 없는 테스트 데이터 등록
-DELETE FROM article;
-
+INSERT INTO article
+SET title = '제목2',
+`body` = '내용2';
 
 # 키 등록
 # 생각해 보니 모든 행(row)의 id 값은 유니크 해야한다.
@@ -68,8 +69,13 @@ FROM article;
 
 # id 없는 테스트 데이터 2개 등록
 INSERT INTO article
-SET title = '제목5',
-`body` = '내용5';
+SET title = '제목3',
+`body` = '내용3';
+
+INSERT INTO article
+SET title = '제목4',
+`body` = '내용4';
+
 
 # 자동 증가 제약 (AUTO_INCREMENT)
 ALTER TABLE article MODIFY id INT(5) NOT NULL UNIQUE AUTO_INCREMENT;
