@@ -44,11 +44,11 @@ public class DBTest {
 		
 		// 4. next메서드로 커서를 이동시켜 각 row들의 데이터를 읽어옴
 		while(rs.next()) {
-			String title = rs.getString("title"); // 문자	
+			String title = rs.getString("title"); // 해당 커서가 위치한 row의 title 컬럼 데이터를 반환.
 			System.out.println(title);
 		}
 		
-		// 
+		// 사용한 자원들 반납
 		if(rs != null) {			
 			rs.close();
 		}
