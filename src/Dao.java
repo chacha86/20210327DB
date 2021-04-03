@@ -27,12 +27,7 @@ public class Dao {
 		Statement stmt = conn.createStatement();
 		stmt.executeUpdate(sql);
 		
-		if(stmt != null) {
-			stmt.close();
-		}
-		if(conn != null) {
-			conn .close();
-		}		
+		close(stmt, conn);
 		
 	}
 	
@@ -55,17 +50,25 @@ public class Dao {
 			
 		}
 
-		if (rs != null) {
-			rs.close();
-		}
-		if (stmt != null) {
-			stmt.close();
-		}
-		if (conn != null) {
-			conn.close();
-		}
+		close(rs, stmt, conn);
 		
 		return articles;
+	}
+	
+	private void close(Statement stmt, Connection conn) throws SQLException {
+		if(stmt != null) {
+			stmt.close();
+		}
+		if(conn != null) {
+			conn.close();
+		}
+	}
+	
+	private void close(ResultSet rs, Statement stmt, Connection conn) throws SQLException {
+		if(rs != null) {
+			rs.close();
+		}
+		close(stmt, conn);
 	}
 }
 
