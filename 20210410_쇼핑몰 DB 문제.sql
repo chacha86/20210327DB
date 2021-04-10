@@ -86,3 +86,15 @@ ON o.productNo = p.id
 WHERE u.userName = '소지섭';
 
 # 집계함수 : count, sum, min, max, avg
+
+
+SHOW DATABASES;
+
+USE s1;
+
+SHOW TABLES;
+
+SELECT * FROM t_order;
+
+
+

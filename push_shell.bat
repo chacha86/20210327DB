@@ -1,3 +1,3 @@
 git add .
-git commit -m "ºÓ«Œ∏Ù DB πÆ¡¶"
+git commit -m "SQL(¡ﬂ) πÆ¡¶ 1"
 git push origin master
