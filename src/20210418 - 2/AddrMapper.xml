@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AddrMapper">
+  
+  <select id="getAddresses" resultType="Addr">
+    select * 
+    from t_addr_info
+  </select>
+  
+  <insert id="insertAddress" parameterType="Addr">	  	
+	INSERT INTO t_addr_info
+	SET `name` = #{name}, <!-- #일때, name의 값이 강감찬일 때, ''붙여준다. 최종 값이 '강감찬'-->
+	`address` = #{address}, <!-- $일때, address의 값이 대구일 때, '' 안붙여준다.  최종 값이 대구 -->
+	`phone` = #{phone},
+	`regDate` = NOW()
+  </insert>
+  
+  <delete id="deleteAddress" parameterType="int">
+  	DELETE FROM t_addr_info 
+	WHERE idx = #{idx}
+  </delete>
+  
+  <update id="updateAddress">
+  	UPDATE t_addr_info 
+  	SET `name` = #{name}, 
+	`address` = #{address},
+	`phone` = #{phone}
+	WHERE idx = ${idx}
+  </update>
+  
+  <select id ="getSearchedList" parameterType="map" resultType="Addr">
+  	SELECT *
+	FROM t_addr_info
+	<if test="target == 'name'">
+		WHERE `name` LIKE '%${keyword}%';
+	</if>
+	<if test="target == 'phone'">
+		WHERE `phone` LIKE '%${keyword}%';
+	</if>
+	<if test="target == 'address'">
+		WHERE `address` LIKE '%${keyword}%';
+	</if>
+
+  </select>
+  
+</mapper>
