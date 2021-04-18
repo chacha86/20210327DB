@@ -33,24 +33,19 @@ public class MyBatisDao {
 	public void insertAddr(String name, String address, String phone) {
 		SqlSession session = sqlSessionFactory.openSession();
 		AddrMapper mapper = session.getMapper(AddrMapper.class);
-		
-		// mybatis 매개변수를 한개만 받게 되어 있음.
-		// 객체로 받는다. -> DTO(VO)
 		Addr addr = new Addr(name, address, phone);
 		mapper.insertAddress(addr);
-		
 		
 		session.commit(); // commit은 작업한 내용을 실제 DB에 반영하겠다는 의미
 		
 	}
 
 	public void deleteAddr(int idx) {
-		SqlSession session = sqlSessionFactory.openSession();
+		SqlSession session = sqlSessionFactory.openSession(); // 트랜잭션 시작
 		AddrMapper mapper = session.getMapper(AddrMapper.class);
 		mapper.deleteAddress(idx);
-		
-		
-		session.commit(); // commit은 작업한 내용을 실제 DB에 반영하겠다는 의미
+
+		session.commit(); // commit은 작업한 내용을 실제 DB에 반영하겠다는 의미 -> 트랜잭션의 종료
 	}
 
 	public void updateAddr(String name, String address, String phone, int idx) {

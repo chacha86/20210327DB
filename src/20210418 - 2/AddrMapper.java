@@ -18,6 +18,5 @@ public interface AddrMapper {
 	void deleteAddress(int idx);
 	void updateAddress(Addr addr);
 	ArrayList<Addr> getSearchedList(Map param);
-	ArrayList<Addr> getSearchedListByAddress(String keyword); 
 }
 
